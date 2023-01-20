@@ -38,14 +38,16 @@ namespace Ski_ServiceNoSQL.Controllers
 
         // PUT api/<OrdersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(string id, [FromBody] Orders value)
         {
+            _ordersService.Update(id, value);
         }
 
         // DELETE api/<OrdersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            _ordersService.Remove(id);
         }
     }
 }

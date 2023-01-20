@@ -29,12 +29,12 @@ namespace Ski_ServiceNoSQL.Services
         }
 
         public void Update(string id, Orders orderIn) =>
-            _orders.ReplaceOne(order => order.Id.ToString() == id, orderIn);
+            _orders.ReplaceOne(order => order.Id == id, orderIn);
 
         public void Remove(Orders orderIn) =>
             _orders.DeleteOne(order => order.Id == orderIn.Id);
 
         public void Remove(string id) =>
-            _orders.DeleteOne(order => order.Id.ToString() == id);
+            _orders.DeleteOne(order => order.Id == id);
     }
 }
