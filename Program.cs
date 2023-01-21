@@ -18,6 +18,8 @@ builder.Services.AddSingleton<IMongoClient>(s =>
 new MongoClient(builder.Configuration.GetValue<string>("SkiDatabaseSettings:ConnectionString")));
 
 builder.Services.AddSingleton<IOrdersService, OrdersService>();
+builder.Services.AddSingleton<ITokenService, TokenService>();
+builder.Services.AddSingleton<IMitarbeiterService, MitarbeiterService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
