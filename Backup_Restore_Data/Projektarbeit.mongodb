@@ -1,0 +1,141 @@
+db.dropDatabase("Ski")
+
+use Ski
+
+db.createCollection( "Orders", { validator: { 
+    "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["Kundenname", "Email", "Telefon", "Priorität", "Dienstleistung", "Status", "Erfassungsdatum", "Abholdatum"],
+        "properties": {
+            "Kundenname": {
+                "bsonType": "string",
+                "minLength": 1
+            },
+            "Email": {
+                "bsonType": "string",
+                "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            },
+            "Telefon": {
+                "bsonType": "string",
+                "pattern": "^[0-9]*$"
+            },
+            "Priorität": {
+                "bsonType": "string",
+                "enum": ["tief", "standart", "express" , "Tief", "Standart", "Express"]
+            },
+            "Dienstleistung": {
+                "bsonType": "string",
+                "enum": ["Kleiner Service", "Grosser Service", "Rennski-Service", "Bindung montieren und einstellen", "Fell zuschneiden", "Heisswachsen"]
+            },
+            "Status": {
+                "bsonType": "string",
+                "enum": ["offen", "in Bearbeitung", "abgeschlossen", "Offen", "In Bearbeitung", "Abgeschlossen"]
+            },
+            "Erfassungsdatum": {
+                "bsonType": "date"
+            },
+            "Abholdatum": {
+                "bsonType": "date"
+            }
+        }
+    }
+} } )
+
+db.Orders.insertMany([
+{
+    "Kundenname": "John Doe",
+    "Email": "johndoe@example.com",
+    "Telefon": "1234567890",
+    "Priorität": "express",
+    "Dienstleistung": "Rennski-Service",
+    "Status": "in Bearbeitung",
+    "Erfassungsdatum": new Date("2022-01-01"),
+    "Abholdatum": new Date("2022-01-08")
+},
+{
+    "Kundenname": "Jane Smith",
+    "Email": "janesmith@example.com",
+    "Telefon": "0987654321",
+    "Priorität": "Tief",
+    "Dienstleistung": "Kleiner Service",
+    "Status": "Offen",
+    "Erfassungsdatum": new Date("2022-02-15"),
+    "Abholdatum": new Date("2022-02-22")
+},{
+    "Kundenname": "Mike Brown",
+    "Email": "mikebrown@example.com",
+    "Telefon": "0877654321",
+    "Priorität": "Standart",
+    "Dienstleistung": "Bindung montieren und einstellen",
+    "Status": "abgeschlossen",
+    "Erfassungsdatum": new Date("2022-03-01"),
+    "Abholdatum": new Date("2022-03-08")
+},{
+    "Kundenname": "Emily Davis",
+    "Email": "emilydavis@example.com",
+    "Telefon": "9824567890",
+    "Priorität": "Express",
+    "Dienstleistung": "Heisswachsen",
+    "Status": "In Bearbeitung",
+    "Erfassungsdatum": new Date("2022-04-01"),
+    "Abholdatum": new Date("2022-04-08")
+},{
+    "Kundenname": "James Johnson",
+    "Email": "jamesjohnson@example.com",
+    "Telefon": "0787686789",
+    "Priorität": "Standart",
+    "Dienstleistung": "Fell zuschneiden",
+    "Status": "Offen",
+    "Erfassungsdatum": new Date("2022-05-01"),
+    "Abholdatum": new Date("2022-05-08")
+},{
+    "Kundenname": "David Miller",
+    "Email": "davidmiller@example.com",
+    "Telefon": "0877654321",
+    "Priorität": "Tief",
+    "Dienstleistung": "Grosser Service",
+    "Status": "abgeschlossen",
+    "Erfassungsdatum": new Date("2022-06-01"),
+    "Abholdatum": new Date("2022-06-08")
+},{
+    "Kundenname": "William Smith",
+    "Email": "williamsmith@example.com",
+    "Telefon": "0987654321",
+    "Priorität": "express",
+    "Dienstleistung": "Rennski-Service",
+    "Status": "in Bearbeitung",
+    "Erfassungsdatum": new Date("2022-07-01"),
+    "Abholdatum": new Date("2022-07-08")
+},{
+    "Kundenname": "Robert Brown",
+    "Email": "robertbrown@example.com",
+    "Telefon": "0987654321",
+    "Priorität": "Tief",
+    "Dienstleistung": "Kleiner Service",
+    "Status": "Offen",
+    "Erfassungsdatum": new Date("2022-08-01"),
+    "Abholdatum": new Date("2022-08-08")
+}])
+
+
+db.createIndex ({"Status": 1,})
+db.createIndex ({"Priorität": 1,})
+
+db.Orders.find().pretty()
+
+
+
+
+
+{
+    "Kundenname": "Test Test",
+    "Email": "johndoe@example.com",
+    "Telefon": "1234567890",
+    "Priorität": "express",
+    "Dienstleistung": "Rennski-Service",
+    "Status": "in Bearbeitung",
+    "Erfassungsdatum": "2023-01-20T23:15:14.882Z",
+    "Abholdatum": "2023-01-20T23:15:14.882Z"
+}
+
+
