@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using Ski_ServiceNoSQL.Models;
 
 namespace Ski_ServiceNoSQL.Services
@@ -19,6 +20,15 @@ namespace Ski_ServiceNoSQL.Services
         public List<Orders> Get() =>
             _orders.Find(order => true).ToList();
 
+        //public List<Orders> Get()
+        //{
+        //    var projection = Builders<Orders>.Projection
+        //        .Include(doc => doc.Status);
+        //   return (List<Orders>)_orders.Find(Builders<Orders>.Filter.Empty).Project(projection).ToList().Select(bson => BsonSerializer.Deserialize<Orders>(bson));            
+
+        //}
+
+
         public Orders Get(string id) =>
             _orders.Find<Orders>(order => order.Id == id).FirstOrDefault();
 
@@ -30,7 +40,7 @@ namespace Ski_ServiceNoSQL.Services
 
         public void Update(string id, Orders orderIn) =>
             _orders.ReplaceOne(order => order.Id == id, orderIn);
-
+        
         public void Remove(Orders orderIn) =>
             _orders.DeleteOne(order => order.Id == orderIn.Id);
 

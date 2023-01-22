@@ -22,6 +22,29 @@ namespace Ski_ServiceNoSQL.Controllers
             return _ordersService.Get();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
         // GET api/<OrdersController>/5
         [HttpGet("{id}")]
         public ActionResult<Orders> Get(string id)
