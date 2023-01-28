@@ -3,34 +3,35 @@ using Microsoft.AspNetCore.Mvc;
 using Ski_ServiceNoSQL.Models;
 using Ski_ServiceNoSQL.Services;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace Ski_ServiceNoSQL.Controllers
 {
     /// <summary>
     /// Kontroller für die Verbindung zu der Tabelle Mitarbeiter
     /// </summary>
-   
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class MitarbeiterController : ControllerBase
     {
-        
+        private readonly ILogger<MitarbeiterController> _logger;
         private readonly IMitarbeiterService _mitarbeiterService;
-        public MitarbeiterController(IMitarbeiterService mitarbeiterService)
+        public MitarbeiterController(IMitarbeiterService mitarbeiterService, ILogger<MitarbeiterController> logger)
         {
-            this._mitarbeiterService = mitarbeiterService;
+            _mitarbeiterService = mitarbeiterService;
+            _logger = logger;
         }
+        
 
         /// <summary>
         /// Alle Mitarbeiter Anzeigen ohne Passwörter
         /// </summary>
         /// <returns></returns>
-        [AllowAnonymous]
+        
         [HttpGet]
         public ActionResult<List<Mitarbeiter>> AllMitarbeiter()
         {
-
             try
             {
                 List<Mitarbeiter> mitarbeiterList = new List<Mitarbeiter>();
@@ -40,15 +41,22 @@ namespace Ski_ServiceNoSQL.Controllers
                     mitarbeiter.password = "*******";
                 }
                 return Ok(mitarbeiterList);
-
                
             }
             catch (Exception ex)
             {
+                _logger.LogWarning($"Warning --> {ex.Message}");
                 return NotFound($"Warning --> {ex.Message}");
             }
         }
 
+
+        /// <summary>
+        /// Methode um die Eingaben der Mitarbeiter an den Service weiter zu leiten
+        /// </summary>
+        /// <param name="model">Eingaben des Mitarbeiters</param>
+        /// <returns>Ein JWT / Faschle eingaben / User ist blockiert</returns>
+        /// 
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody] Mitarbeiter model)
@@ -75,10 +83,33 @@ namespace Ski_ServiceNoSQL.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogWarning($"Warning --> {ex.Message}");
                 return NotFound($"Warning --> {ex.Message}");
             }
         }
 
-
+        /// <summary>
+        /// Kontroller um Mitarbeiter freizuschalten
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public IActionResult Deblock(string id)
+        {
+            try
+            {
+                var mitarbeiter = _mitarbeiterService.Deblocker(id);
+                if (mitarbeiter != null)
+                {
+                    return Ok("Mitarbeiter wurde wieder freigegeben");
+                }
+                return Ok("Mitarbeiter konnte nicht freigegeben werden oder er existiern nicht");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning($"Warning --> {ex.Message}");
+                return NotFound($"Warning --> {ex.Message}");
+            }
+        }
     }
 }

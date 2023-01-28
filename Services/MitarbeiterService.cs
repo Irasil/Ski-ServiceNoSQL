@@ -52,5 +52,22 @@ namespace Ski_ServiceNoSQL.Services
             }
             return new JsonResult(new { falsch = "Falsch" });
         }
+
+        /// <summary>
+        /// Mitarbeiter Freigeben 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Mitarbeiter Deblocker(string id)
+        {
+            Mitarbeiter? mitarbeiter = _orders.Find(order => order.Id == id).FirstOrDefault();
+            if (mitarbeiter != null)
+            {
+                mitarbeiter.counter = 0;
+                _orders.ReplaceOne(order => order.Id == id, mitarbeiter);
+                return mitarbeiter;
+            }
+            return null;
+        }
     }
 }

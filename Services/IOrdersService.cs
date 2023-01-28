@@ -6,6 +6,7 @@ namespace Ski_ServiceNoSQL.Services
     public interface IOrdersService
     {
         List<Orders> Get();
+        Task<List<Orders>> GetPriority();
         Orders Get(string id);
         Orders Create(Orders order);
         void Update(string id, Orders orderIn);

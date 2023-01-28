@@ -1,12 +1,22 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using Serilog;
 using Ski_ServiceNoSQL.Models;
 using Ski_ServiceNoSQL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Logger
+var loggerFromSettings = new LoggerConfiguration()
+               .ReadFrom.Configuration(builder.Configuration)
+               .Enrich.FromLogContext()
+               .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(loggerFromSettings);
 
 builder.Services.Configure<SkiDatabaseSettings>(
     builder.Configuration.GetSection(nameof(SkiDatabaseSettings)));
