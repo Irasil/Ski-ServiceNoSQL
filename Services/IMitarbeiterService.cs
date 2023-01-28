@@ -6,7 +6,6 @@ namespace Ski_ServiceNoSQL.Services
     public interface IMitarbeiterService
     {
         public JsonResult? ProveUser(Mitarbeiter mitarbeiter);
-        //public Mitarbeiter Deblocker(int id);
         public List<Mitarbeiter> AllMitarbeiter();
         public Mitarbeiter Deblocker(string id);
     }

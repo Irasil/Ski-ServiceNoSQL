@@ -28,7 +28,6 @@ namespace Ski_ServiceNoSQL.Services
             return results;
         }
 
-
         public Orders Get(string id) =>
             _orders.Find(o => o.Id == id).FirstOrDefault();
 

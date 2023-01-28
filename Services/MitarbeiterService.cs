@@ -31,8 +31,6 @@ namespace Ski_ServiceNoSQL.Services
         public List<Mitarbeiter> mitarbeiters;
         public JsonResult? ProveUser(Mitarbeiter mitarbeiter)
         {
-            //Hier ist es ein "Gebastel" ich wusste nicht wie ich es mit dem JsonResult besser machen könnte.
-
             mitarbeiters = _orders.Find(order => true).ToList();
             foreach (var m in mitarbeiters)
             {
