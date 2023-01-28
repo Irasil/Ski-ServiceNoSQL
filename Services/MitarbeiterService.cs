@@ -41,7 +41,7 @@ namespace Ski_ServiceNoSQL.Services
                 else if (m.name == mitarbeiter.name && m.password != mitarbeiter.password)
                 {
                     m.counter += 1;
-                    _orders.Find(mitarbeiter => mitarbeiter.counter == m.counter);
+                    _orders.ReplaceOne(order => order.name == m.name, m);
                     if (m.counter >= 3)
                     {
                         return new JsonResult(new { gespert = m.counter });
