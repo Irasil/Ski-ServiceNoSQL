@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ski_ServiceNoSQL.Controllers.OrdersController">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABAAABAgAAAAAAAKAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Controllers\OrdersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Controllers.MitarbeiterController">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAIAAAAAAAAAAwAAAAAgA=</HashCode>
+      <FileName>Controllers\MitarbeiterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Models.Orders">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAECCQAAABAAAAgAAAAAAAAAAAAAAAAAAABAAg=</HashCode>
+      <FileName>Models\Orders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Models.SkiDatabaseSettings">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAIAAAAAAAACAAAAABAAA=</HashCode>
+      <FileName>Models\SkiDatabaseSettings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Models.Mitarbeiter">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Mitarbeiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Services.TokenService">
+    <Position X="6.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\TokenService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Services.OrdersService">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAFAAABAAAAABAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\OrdersService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ski_ServiceNoSQL.Services.MitarbeiterService">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAgAEEAAAAAAAAAAAAAAAAAAEBAAAgAAAAAAA=</HashCode>
+      <FileName>Services\MitarbeiterService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Ski_ServiceNoSQL.Models.ISkiDatabaseSettings">
+    <Position X="1" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAIAAAAAAAACAAAAABAAA=</HashCode>
+      <FileName>Models\ISkiDatabaseSettings.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ski_ServiceNoSQL.Services.IMitarbeiterService">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAAAgAAAAAAA=</HashCode>
+      <FileName>Services\IMitarbeiterService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ski_ServiceNoSQL.Services.IOrdersService">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAABAAABAAAAABAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IOrdersService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ski_ServiceNoSQL.Services.ITokenService">
+    <Position X="4.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ITokenService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Arial" Size="8" />
+</ClassDiagram>
